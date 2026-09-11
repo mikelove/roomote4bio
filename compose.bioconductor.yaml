@@ -1,7 +1,9 @@
 services:
   bioconductor:
     image: bioconductor/bioconductor_docker:RELEASE_3_23
-    command: sleep infinity
+    command: >-
+      bash -c 'Rscript -e "BiocManager::install(\"DESeq2\", ask = FALSE,
+      update = FALSE)" && sleep infinity'
     volumes:
       - .:/workspace
     working_dir: /workspace
